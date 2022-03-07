@@ -2,6 +2,7 @@
 using Cycle.Game.Directing;
 using Cycle.Game.Scripting;
 using Cycle.Game.Services;
+using Cycle.Game;
 
 
 namespace Cycle
@@ -20,8 +21,14 @@ namespace Cycle
             // create the cast
             Cast cast = new Cast();
             // cast.AddActor("food", new Food());
-            cast.AddActor("playerOne", new Player());
-            cast.AddActor("playerTwo", new Player());
+            int x1 = Constants.MAX_X / 2;
+            int y1 = Constants.MAX_Y / 2;
+            int x2 = Constants.MAX_X / 3;
+            int y2 = Constants.MAX_Y / 3;
+            Point startPositionOne = new Point(x1, y1);
+            Point startPositionTwo = new Point(x2, y2);
+            cast.AddActor("playerOne", new Player(startPositionOne));
+            cast.AddActor("playerTwo", new Player(startPositionTwo));
             // cast.AddActor("score", new Score());
 
             // create the services

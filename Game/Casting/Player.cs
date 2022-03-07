@@ -11,13 +11,15 @@ namespace Cycle.Game.Casting
     public class Player : Actor
     {
         private List<Actor> segments = new List<Actor>();
-        private Point direction = new Point(0, 0);
+        private Point direction = new Point(0, -1 * Constants.CELL_SIZE);
+        private Point startPosition = new Point(0,0);
 
         /// <summary>
         /// Constructs a new instance of a Player.
         /// </summary>
-        public Player()
+        public Player(Point startPosition)
         {
+            this.startPosition = startPosition;
             PrepareBody();
         }
 
@@ -107,8 +109,8 @@ namespace Cycle.Game.Casting
         /// </summary>
         private void PrepareBody()
         {
-            int x = Constants.MAX_X / 2;
-            int y = Constants.MAX_Y / 2;
+            int x = startPosition.GetX();
+            int y = startPosition.GetY();
 
             for (int i = 0; i < Constants.PLAYER_LENGTH; i++)
             {
