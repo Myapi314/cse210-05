@@ -71,30 +71,32 @@ namespace Cycle.Game.Scripting
             List<Actor> bodyOne = playerOne.GetBody();
             List<Actor> bodyTwo = playerTwo.GetBody();
 
+            
+
             foreach (Actor segment in bodyOne)
             {
+                if (headTwo.GetPosition().Equals(segment.GetPosition()))
+                {
+                    isGameOver = true;
+                    gameOverMsg = "Player Two Loses!";
+                }
                 if (segment.GetPosition().Equals(headOne.GetPosition()))
                 {
                     isGameOver = true;
                     gameOverMsg = "Self-burn that's rare! Player One Loses!";
                 }
-                else if (segment.GetPosition().Equals(headTwo.GetPosition()))
-                {
-                    isGameOver = true;
-                    gameOverMsg = "Player Two Loses!";
-                }
             }
             foreach (Actor segment in bodyTwo)
             {
+                if (headOne.GetPosition().Equals(segment.GetPosition()))
+                {
+                    isGameOver = true;
+                    gameOverMsg = "Player One Loses!";
+                }
                 if (segment.GetPosition().Equals(headTwo.GetPosition()))
                 {
                     isGameOver = true;
                     gameOverMsg = "Self-burn that's rare! Player Two Loses!";
-                }
-                else if (segment.GetPosition().Equals(headOne.GetPosition()))
-                {
-                    isGameOver = true;
-                    gameOverMsg = "Player One Loses!";
                 }
             }
         }

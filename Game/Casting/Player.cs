@@ -11,15 +11,17 @@ namespace Cycle.Game.Casting
     public class Player : Actor
     {
         private List<Actor> segments = new List<Actor>();
-        private Point direction = new Point(0, -1 * Constants.CELL_SIZE);
+        private Point direction = new Point(0, -Constants.CELL_SIZE);
         private Point startPosition = new Point(0,0);
+        private string head = "";
 
         /// <summary>
         /// Constructs a new instance of a Player.
         /// </summary>
-        public Player(Point startPosition)
+        public Player(Point startPosition, string head)
         {
             this.startPosition = startPosition;
+            this.head = head;
             PrepareBody();
         }
 
@@ -115,8 +117,9 @@ namespace Cycle.Game.Casting
             for (int i = 0; i < Constants.PLAYER_LENGTH; i++)
             {
                 Point position = new Point(x - i * Constants.CELL_SIZE, y);
+                // position.Scale(Constants.CELL_SIZE);
                 Point velocity = new Point(1 * Constants.CELL_SIZE, 0);
-                string text = i == 0 ? "8" : "#";
+                string text = i == 0 ? head : "#";
                 Color color = i == 0 ? Constants.YELLOW : Constants.GREEN;
 
                 Actor segment = new Actor();

@@ -24,8 +24,10 @@ namespace Cycle.Game.Scripting
         /// <inheritdoc/>
         public void Execute(Cast cast, Script script)
         {
+
             Player playerOne = (Player)cast.GetFirstActor("playerOne");
             Player playerTwo = (Player)cast.GetFirstActor("playerTwo");
+            // playerTwo.SetPosition();
             List<Actor> segmentsOne = playerOne.GetSegments();
             List<Actor> segmentsTwo = playerTwo.GetSegments();
             // Actor score = cast.GetFirstActor("score");
